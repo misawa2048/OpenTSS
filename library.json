@@ -1,0 +1,24 @@
+{
+    "name": "OpenTSS",
+    "version": "0.9.0",
+    "description": "OpenTSS is a threadLike system without thread. If delay() is used, the callback may not come around.",
+    "keywords": "timing,tss,thread,rtos,task",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/misawa2048/OpenTSS.git"
+    },
+    "authors":
+    [
+      {
+        "name": "ELIX.INC",
+        "email": "misawa@elix.jp",
+        "url": "https://qiita.com/ELIXIR",
+        "maintainer": true
+      }
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/misawa2048/OpenTSS.git",
+    "frameworks": "*",
+    "platforms": "*"
+  }
