@@ -1,7 +1,7 @@
 {
     "name": "OpenTSS",
     "version": "0.9.0",
-    "description": "OpenTSS is a threadLike system without thread. If delay() is used, the callback may not come around.",
+    "description": "OpenTSS is a threadLike system without thread. delay() must be shorter than the span of the callbacks. If not, callbacks may not back in correctly.",
     "keywords": "timing,tss,thread,rtos,task",
     "repository":
     {

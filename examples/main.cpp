@@ -5,6 +5,7 @@ OpenTSS tss; // time sharing system
 
 void Fnc1(uint32_t _delta){
   Serial.printf("Trig1 calls each %dms\n", _delta);
+  delay(100); // delay() can be used only for a time shorter than the task interval
 }
 
 void setup() {
@@ -17,5 +18,5 @@ void setup() {
 
 void loop() {
   tss.Update(); // call this in loop()
-  delay(1);
+  delay(1); // delay() can be used only for a time shorter than the task interval
 }
