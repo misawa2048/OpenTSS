@@ -24,7 +24,6 @@ class OpenTSS{
         m_trigWorkArr[i].reset();
       }
       m_currentMillis = millis();
-      m_deltaMillis = 0;
     }
 
     /** Add a func(uint32_t) that is called at regular intervals
@@ -56,19 +55,25 @@ class OpenTSS{
     /** Call this in loop()
      * return: Time since last call [ms] */
     uint32_t Update(){
-        uint32_t nowMillis = millis();
-        m_deltaMillis = nowMillis - m_currentMillis;
-        m_currentMillis = nowMillis;
-        for(int8_t i=0;i<m_trigNum;++i){
-          if(m_trigWorkArr[i].func!=NULL){
-            m_trigWorkArr[i].timer += m_deltaMillis;
-            if(m_trigWorkArr[i].timer >= m_trigWorkArr[i].trigTime){
-              m_trigWorkArr[i].func(m_trigWorkArr[i].timer);
-              m_trigWorkArr[i].timer -= m_trigWorkArr[i].trigTime;
-            }
+      uint32_t nowMillis = millis();
+      uint32_t deltaMillis = nowMillis - m_currentMillis;
+      m_currentMillis = nowMillis;
+      return Update(deltaMillis);
+    };
+
+    /** Call this if you need to update TSS with a different time interval
+     * _deltaMillis: Time since last call [ms] */
+    uint32_t Update(uint32_t _deltaMillis){
+      for(int8_t i=0;i<m_trigNum;++i){
+        if(m_trigWorkArr[i].func!=NULL){
+          m_trigWorkArr[i].timer += _deltaMillis;
+          if(m_trigWorkArr[i].timer >= m_trigWorkArr[i].trigTime){
+            m_trigWorkArr[i].func(m_trigWorkArr[i].timer);
+            m_trigWorkArr[i].timer -= m_trigWorkArr[i].trigTime;
           }
         }
-        return m_deltaMillis;
+      }
+      return _deltaMillis;
     };
 
     /** Get the number of remaining triggers available
@@ -95,6 +100,5 @@ class OpenTSS{
     TrigWork* m_trigWorkArr;
     int8_t m_trigNum;
     uint32_t m_currentMillis;
-    uint32_t m_deltaMillis;
 };
 #endif // __OPENTSS_H__
