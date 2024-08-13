@@ -1,6 +1,6 @@
 # OpenTSS
 + **OpenTSS** is a tiny but useful thread-like system for Arduino.  
-+ If delay(ms) in the task is longer than task span, the callback may not come around correctry. 
++ If delay(ms) in the task is longer than task interval, the callback may not come around correctry. 
 
 **Sample:**  
 ```
