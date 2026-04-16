@@ -1,3 +1,6 @@
+## V1.0.0
+- Moved `Setup()` into the constructor.
+
 ## V0.9.2
 - add update(_delta) method. Call this if you need to update with a different time interval.  
 
